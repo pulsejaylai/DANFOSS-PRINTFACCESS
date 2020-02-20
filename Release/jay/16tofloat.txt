@@ -1,0 +1,80 @@
+long long int getS(int e,int m)
+{
+    long long int s=e;
+    for (int i=1;i<m;i++)
+    {
+        s*=e;
+    }
+    return s;
+}
+
+float hex2float(unsigned char*p,float& result)
+{
+    long long int a=0x00000000;
+
+    a=a|p[0];
+    a=(a<<8)|p[1];
+    a=(a<<8)|p[2];
+    a=(a<<8)|p[3];
+
+    //获得符号位，1表示负数，0表示正数
+    int s=(a>>31)&0xFF;
+    int e=(a>>23)&0x0FF;
+    //获得指数
+    e=e-127;
+    //获得底数
+    long long int m=a&0x7FFFFF|0x800000;
+    long long int c=0;
+    float v = 0.0f, y = 1.0f;
+    //向右移动
+    if (e>0)
+    {
+        //获得整数的二进制
+        c=(m>>(23-e))&0xFFFFFFF;
+        long int b=0;
+        for (int i=0;i<23-e;i++)
+        {
+            b=(b<<1)|0x01;
+        }
+        //获得小数的二进制
+        b=b&m;
+        int j=0;
+        for (int i=23-e-1;i>=0;i--)
+        {
+            j++;
+            y=(double)(((b>>i)&0x01)*getS(2,j));
+            if (y>0.0)
+            {
+                v+=1.0/y;
+            }
+        }
+        v=c+v;
+        if (s>0)
+        {
+            v=-v;
+        }
+    }
+    else
+    {
+        //向左移动
+        e=-e;
+        c=m;
+        int j=0;
+        for (int i=23+e-1;i>=0;i--)
+        {
+            j++;
+            y=(float)(((c>>i)&0x01)*getS(2,j));
+            if (y>0.0)
+            {
+                v+=1.0/y;
+            }
+        }
+        if (s>0)
+        {
+            v=-v;
+        }
+    }
+
+    result = v;
+    return v;
+}

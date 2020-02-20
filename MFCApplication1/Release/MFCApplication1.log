@@ -1,0 +1,9 @@
+﻿  MFCApplication1.cpp
+  MFCApplication1Dlg.cpp
+d:\jaylai\c++access\mfcapplication1\mfcapplication1\mfcapplication1dlg.cpp(257): warning C4101: 'buf': unreferenced local variable
+  Generating code
+  42 of 275 functions (15.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MFCApplication1.vcxproj -> D:\jaylai\c++access\MFCApplication1\Release\MFCApplication1.exe

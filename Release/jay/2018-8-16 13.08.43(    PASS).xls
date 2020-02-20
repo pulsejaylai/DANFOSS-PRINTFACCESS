@@ -1,0 +1,23 @@
+步骤	动作	下限 	上限	返回值	结果	延时(ms)	CAN1发送ID	CAN1发送数据
+	压紧产品	 	 		OK	1500		
+	接入信号	 	 		OK	500		
+								
+	2通道线圈电阻	A/4.9R	A/6.3R	5.835473R	OK			
+	2通道线圈电阻	B/4.9R	B/6.3R	5.665807R	OK			
+								
+	线圈1&2供电	0V	0V		OK			
+	线圈4&3供电	0V	0V		OK			
+								
+	线圈1&2供电	12V	12V		OK	1000		
+	线圈电压	NC1/0V	NC1/2V	0.580852V	OK			
+	线圈电压	NO2/4V	NO2/6V	4.846867V	OK			
+	LED	Green	Green		OK			
+	线圈1&2供电	0V	0V		OK	1000		
+								
+	线圈4&3供电	12V	12V		OK	1000		
+	线圈电压	NC1/4V	NC1/6V	4.842834V	OK			
+	线圈电压	NO2/0V	NO2/2V	0.587017V	OK			
+	LED	Blue	Blue		OK			
+	线圈4&3供电	0V	0V		OK	1000		
+								
+	END							

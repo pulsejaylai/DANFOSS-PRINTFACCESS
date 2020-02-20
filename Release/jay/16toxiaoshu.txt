@@ -1,0 +1,43 @@
+#include<iostream>
+#include<string>
+#include<cmath>
+using namespace std;
+
+int main() {
+    long long HEX;
+    int POWER;//存储幂
+    bool ZHENG;//判断是否为正数
+    cout << "请输入十六进制数字：";
+    scanf_s("%x", HEX);
+        if (HEX >= pow(2, 31)) {  
+            ZHENG = false;
+            HEX = (HEX - pow(16, 7)) * 2;  
+        }
+        else {
+            ZHENG = true;
+            HEX *= 2;
+        }
+        POWER = (HEX >> 24)-127;
+        for (int i = 0; i < 8; ++i) {
+            HEX = HEX << 1;
+            if (HEX >= pow(2, 32))
+                HEX -= pow(2, 32);
+        }
+        HEX += pow(2, 32);
+        while (!(HEX % 2))
+            HEX /= 2;
+        int temp1;
+        double temp2;
+        int k = 0, i = 0;
+        for (; k < HEX; i++)
+            k = pow(2, i);//i=11
+        temp1 = HEX >> (i - POWER - 2);
+        temp2= HEX-temp1*pow(2, i - POWER - 2);
+        for(int k=0;k<i - POWER - 2;++k)
+        temp2 /= 2;
+        if(ZHENG)
+            cout<<"十进制数的形式为："<<temp1 + temp2;
+        else
+            cout << "十进制数的形式为：" << -temp1 - temp2;
+        return 0;
+    }
